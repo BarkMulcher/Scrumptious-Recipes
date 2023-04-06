@@ -1,0 +1,52 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    border-bottom: 1px solid black;
+    padding: 16px;
+    background-color: #ff71ce;
+}
+
+body {
+    margin-left: 20, auto;
+    padding: 0;
+    /* this fixed the header width: */
+    width: 100%;
+    position: absolute;
+}
+
+.recipe-list {
+    display: grid;
+    grid: 300px / auto auto auto auto;
+    grid-gap: 80px;
+    margin: 20px;
+    padding: 16px;
+}
+
+img {
+    height: 200px;
+}
+
+td {
+    padding-left: 30px;
+}
+
+tr:nth-child(even) {
+    background-color: gray;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: green;
+    text-decoration: none;
+}
+
+footer {
+    padding: 24px;
+    background-color: #01cdfe;
+    border: 3px solid #b967ff;
+}
