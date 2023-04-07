@@ -1,21 +1,15 @@
-{% load static %}
 
-<!DOCTYPE html>
-<html lang="en-US">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ recipe_object.title }} - Scrumptious Recipes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static './recipes.css' %}">
-</head>
+{% block title %}
+Scrumptious Recipes
+{% endblock title %}
+
+{% block content %}
 <header>
     <nav>
-        <a href="../">Main Page</a>
+        <a href="{% url 'recipe_list' %}">Main Page</a>
+        <a href="{% url 'edit_recipe' recipe_object.id %}">Edit This Recipe</a>
     </nav>
 </header>
 
@@ -73,6 +67,7 @@
         </article>
     </main>
 </body>
+{% endblock content %}
 <footer>Made with love by Scrumptious Recipes</footer>
 
 </html>

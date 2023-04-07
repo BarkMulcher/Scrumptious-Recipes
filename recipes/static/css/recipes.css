@@ -32,6 +32,11 @@ td {
     padding-left: 30px;
 }
 
+/* a {
+    display: grid;
+    grid-template-columns: auto;
+} */
+
 tr:nth-child(even) {
     background-color: gray;
 }
