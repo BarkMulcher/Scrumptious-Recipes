@@ -14,22 +14,23 @@ class Recipe(models.Model):
     made_this = models.BooleanField(default=False)
 
     author = models.ForeignKey(
-        USER_MODEL,
+        settings.AUTH_USER_MODEL,
         related_name='recipes',
         on_delete=models.CASCADE,
         null=True
-                )
+    )
 
     def __str__(self):
         return self.title
 
-class RecipeSteps(models.Model):
-    instruction = models.CharField(max_length=500)
+class RecipeStep(models.Model):
+    step_number = models.SmallIntegerField(null=True)
+    instruction = models.TextField()
     order = models.PositiveIntegerField()
     recipe = models.ForeignKey(
         Recipe,
         related_name='steps',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
 
     def recipe_title(self):
@@ -41,3 +42,25 @@ class RecipeSteps(models.Model):
         # must run makemigrations and migrate after any changes
         # to see migs, run 'showmigrations'
 
+class Ingredient(models.Model):
+    food_item = models.CharField(max_length=150)
+    amount = models.CharField(max_length=150)
+    recipe = models.ForeignKey(
+        Recipe,
+        related_name='ingredients',
+        on_delete=models.CASCADE)
+
+    def recipe_title(self):
+        return self.recipe.title
+
+    class Meta:
+        ordering = ['food_item']
+
+    print(food_item)
+
+# class Author(models.Model):
+#     author = models.CharField(max_length=150)
+#     recipe = models.ForeignKey(
+#         Recipe,
+#         related_name='author',
+#         on_delete=models.CASCADE)

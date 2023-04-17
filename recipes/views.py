@@ -32,19 +32,21 @@ def recipe_list(request):
     }
     return render(request, 'recipes/index.html', context)
 
-
+@login_required()
 def create_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST)
         # validate form inputs and save:
         if form.is_valid():
-            form.save()
+            recipe = form.save(False)
             # if is_valid=True, redirect
+            recipe.author = request.user
+            recipe.save()
             return redirect('recipe_list')
     else:
         form = RecipeForm()
     context = {
-        'recipe_form': form
+        'form': form
     }
     return render(request, 'recipes/create.html', context)
 
@@ -67,3 +69,10 @@ def edit_recipe(request, id):
     }
     return render(request, 'recipes/edit.html', context)
 
+@login_required()
+def user_recipes(request):
+    recipes = Recipe.objects.filter(author=request.user)
+    context = {
+        'recipe_list': recipes,
+    }
+    return render(request, 'recipes/index.html', context)
