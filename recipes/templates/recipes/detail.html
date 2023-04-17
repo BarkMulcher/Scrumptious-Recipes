@@ -56,12 +56,16 @@ Scrumptious Recipes
             <div>
                 <h2>Steps</h2>
                 <ol>
-                    <li>Blanch the green beans</li>
+                    {% for step in recipe_object.steps.all %}
+                    <li> {{ step.instruction }} </li>
+                    {% endfor %}
+                    
+                    {% comment %} <li>Blanch the green beans</li>
                     <li>Grill the green beans and the ears of corn</li>
                     <li>Chop the green beans</li>
                     <li>Slice the corn off the cob</li>
                     <li>Grill the tortillas</li>
-                    <li>Assemble the tacos with veggies, salsa, and cheese</li>
+                    <li>Assemble the tacos with veggies, salsa, and cheese</li> {% endcomment %}
                 </ol>
             </div>
         </article>
