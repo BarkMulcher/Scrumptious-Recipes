@@ -5,6 +5,6 @@ class RecipesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'recipes'
 
-# class MainConfig(AppConfig):
-#     default_auto_field = 'django.db.models.BigAutoField'
-#     name = ''
+class AccountsConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'users'

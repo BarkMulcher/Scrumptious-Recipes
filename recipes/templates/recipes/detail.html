@@ -9,7 +9,9 @@ Scrumptious Recipes
 <header>
     <nav>
         <a href="{% url 'recipe_list' %}">Main Page</a>
+        {% if user.is_authenticated %}
         <a href="{% url 'edit_recipe' recipe_object.id %}">Edit This Recipe</a>
+        {% endif %}
     </nav>
 </header>
 
@@ -59,7 +61,7 @@ Scrumptious Recipes
                     {% for step in recipe_object.steps.all %}
                     <li> {{ step.instruction }} </li>
                     {% endfor %}
-                    
+
                     {% comment %} <li>Blanch the green beans</li>
                     <li>Grill the green beans and the ears of corn</li>
                     <li>Chop the green beans</li>

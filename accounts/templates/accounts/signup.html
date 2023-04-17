@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Scrumptious Recipes - Sign Up Page!
+{% endblock title %}
+
+{% block content %}
+
+<header>
+    <nav>
+        <a href="{% url 'recipe_list' %}">Main Page</a>
+    </nav>
+</header>
+<body>
+    <h1>Scrumptious Recipes</h1>
+    <h2>All the food that's fit to eat</h2>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Create User!</button>
+        </form>
+    </main>
+</body>
+{% endblock content %}
+<footer>Made with love by Scrumptious Recipes</footer>
+
+</html>

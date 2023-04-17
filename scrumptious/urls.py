@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 
-# def redirect_to_recipe_list(request):
-#     return redirect('list_recipes')
+def redirect_to_recipe_list(request):
+    return redirect('recipe_list')
 
 urlpatterns = [
+    # path('', redirect_to_recipe_list),
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
+    path('', include('accounts.urls'))
 ]
 
 handler404 = 'recipes.views.show_404'
